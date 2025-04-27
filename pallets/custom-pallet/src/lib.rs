@@ -1,14 +1,17 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+#![cfg_attr(not(feature = "std"), no_std)]
 
-#[cfg(test)]
-mod tests {
+pub use pallet::*;
+
+#[frame_support::pallet]
+pub mod pallet {
     use super::*;
+    use frame_support::pallet_prelude::*;
+    use frame_system::pallet_prelude::*;
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+    #[pallet::pallet]
+    pub struct Pallet<T>(_);
+
+    // Configuration trait for the pallet.
+    #[pallet::config]
+    pub trait Config: frame_system::Config {}
 }

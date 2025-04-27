@@ -8,3 +8,16 @@ repository.workspace = true
 edition.workspace = true
 
 [dependencies]
+codec = { features = ["derive"], workspace = true }
+scale-info = { features = ["derive"], workspace = true }
+frame-support.workspace = true
+frame-system.workspace = true
+
+[features]
+default = ["std"]
+std = [
+  "codec/std",
+  "frame-support/std",
+  "frame-system/std",
+  "scale-info/std",
+]
